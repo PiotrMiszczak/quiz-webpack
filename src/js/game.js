@@ -41,42 +41,10 @@ import soso from '../assets/img/so-so.jpg';
   const counter__circle = document.querySelector('.counter__circle')
   
   const max__points = (questions__amount + (10*questions__amount));
-  const questions = [
-    {
-      question: "What is the capital of Slovenia?",
-      answer0: "Bratislava",
-      answer1: "Zagreb",
-      answer2: "Lublana",
-      answer3: "Skopje",
-      correct: 2,
-    },
-    {
-      question: "Which of these rivers is the longest?",
-      answer0: "Dniepr",
-      answer1: "Missisipi",
-      answer2: "Ganges",
-      answer3: "Loara",
-      correct: 1,
-    },
-    {
-      question: "In which city you can find Willis/Sears tower?",
-      answer0: "New York",
-      answer1: "Baltimore",
-      answer2: "London",
-      answer3: "Chicago",
-      correct: 3,
-    },
-    {
-      question: "Which city held 1988 Olympics?",
-      answer0: "Los Angeles",
-      answer1: "Moscow",
-      answer2: "Atlanta",
-      answer3: "Seul",
-      correct: 3,
-    },
-  ];
-  
   let available__questions = [];
+  let questions = [];
+  
+  
   if(button){
   function newGame() {
     button.disabled = true;
