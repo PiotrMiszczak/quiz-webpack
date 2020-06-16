@@ -40,6 +40,9 @@
     "webpack-merge": "4.2.2"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "gsap": "^3.3.1",
+    "normalize.css": "^8.0.1",
+    "raw-loader": "^4.0.1",
+    "url-loader": "^4.1.0"
   }
 }
