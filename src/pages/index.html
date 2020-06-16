@@ -12,10 +12,27 @@
             <p>Ten login jest już zajęty, wybierz inny</p>
         </div>
         <section class="login">
-            <h1>Quiz game</h1>
-            <label class ="login__label" for="name">Username:
-            <input class ="login__username" type="text" name="name" id="name">
-        </label>
+            <h1 class="login__header">Quiz game</h1>
+            <label class ="login__label" for="name">Username:</label>
+            <input class ="login__input" type="text" name="name" id="name">
+           
+            <label class ="login__label" for="category">Category:</label>
+            <select class ="login__input" type="text" name="category" id="category">
+                <option value="">General knowledge</option>
+                <option value="">Movies</option>
+                <option value="">Sport</option>
+                <option value="">Politics</option>
+                <option value="">Music</option>
+            </select>
+            <div class="login__radio-wrapper">
+                <input class ="login__input-radio" type="radio" name="difficulty" id="easy" checked>
+                <label class ="login__label-radio" for="easy">Easy</label>
+                <input class ="login__input-radio" type="radio" name="difficulty" id="medium"> 
+                <label class ="login__label" for="medium">Medium</label>
+                <input class ="login__input-radio" type="radio" name="difficulty" id="hard"> 
+                <label class ="login__label" for="hard">Hard</label>
+                
+            </div>
             <button class="login__button">Let's start!</button>
     </section>
     </main>

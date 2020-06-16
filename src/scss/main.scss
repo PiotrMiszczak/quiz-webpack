@@ -103,26 +103,44 @@ main{
 
 .login{
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 0.5rem;
+
   border: 2px solid $darkBlue;
   border-radius: 4px;
-  &__username{
-    border:solid 1px $darkBlue;
-    outline: solid 1px $darkBlue;
-    width: 50%;
-    margin-left: 0.5rem;
-  }
-  &__label{
+  &__radio-wrapper{
+    grid-column-start: span 2;
     display: flex;
     justify-content: center;
     align-items: center;
+
+  }
+  &__header{
+    grid-column-start: span 2;
+    text-align: center;
+  }
+  &__input{
+    border:solid 1px $darkBlue;
+    outline: solid 1px $darkBlue;
+    width: 70%;
+    margin-left: 0.5rem;
+    justify-self: center;
+    &-radio{
+      margin: 1rem 0.2rem 1rem 1rem;
+    }
+  }
+ 
+  &__label{
+    text-align: right;
   }
   &__button{
   @include button;
   padding: 8px;
+  grid-column-start: span 2;
+  justify-self: center;
+  max-width: 100px;
   &-active{
     @include button-active;
   }

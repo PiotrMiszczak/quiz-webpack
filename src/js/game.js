@@ -36,11 +36,11 @@ import soso from '../assets/img/so-so.jpg';
   let score = 0;
   const body = document.getElementsByTagName('body')
   let question__counter = 1;
-  const questions__amount = 4;
+  const questions__amount = 10;
   const counter = document.querySelector('.counter');
   const counter__circle = document.querySelector('.counter__circle')
   
-  const max__points = (questions__amount + (10*questions__amount));
+  const max__points = (questions__amount);
   let available__questions = [];
   let questions = [];
   
@@ -54,7 +54,31 @@ import soso from '../assets/img/so-so.jpg';
     getQuestion();
   }
   
+  fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
+  .then(resp => resp.json())
+  .then(resp => {
+    const results = resp.results;
+   questions = results.map(result => { 
+      const formatedQuestion = {
+        question: result.question
+      }
+      const formatedAnswers = [...result.incorrect_answers];
+      formatedQuestion.correct = Math.floor(Math.random()*4);
+      formatedAnswers.splice(formatedQuestion.correct,0,result.correct_answer);
+
+      formatedAnswers.forEach((choice,index) => {
+        formatedQuestion['answer' + index] = choice
+      })
+      return formatedQuestion;
+      
+
+
+    })
+    newGame()
   
+  })
+  
+
   function getQuestion() {
     counter.innerHTML='10';
     
@@ -62,18 +86,22 @@ import soso from '../assets/img/so-so.jpg';
       let value = counter.innerHTML;
       value=(value-0.1).toFixed(1);
       counter.innerHTML=value;
-      if(value==0){
+      if(value==0.1){
         if((available__questions.length)==0 && question__counter==questions__amount){
           localStorage.setItem(username, score);
-          clearInterval(timer);
           window.location = 'score.html';}
-        getQuestion();
+          stopInterval()
+        setTimeout(getQuestion(),10)
         question__counter++;
       }
 
     };
+    
     const timer = setInterval(countdown,100);
-    setTimeout(function(){clearInterval(timer)}, 10000)
+    function stopInterval(){
+    clearInterval(timer);
+
+    }
   
     
     button.disabled = true
@@ -102,22 +130,24 @@ import soso from '../assets/img/so-so.jpg';
     })})
     function scoring(){
       if(answers[current__question.correct].classList.contains('answer-active')){
-      score=(score+1+parseInt(counter.innerText));
+        
+      score++;
     console.log(score);
-    clearInterval(timer);
+    
   }
   
       if((available__questions.length)==0 && question__counter==questions__amount){
+        
   localStorage.setItem(username, score);
-  clearInterval(timer);
+  
   window.location = 'score.html';
     }
-    
-    getQuestion();
+    stopInterval();
+    setTimeout(getQuestion(),10)
     question__counter++;
     
    }
-     
+    
     button.addEventListener('click', scoring)
     button.addEventListener('click', (e) => {
     button.removeEventListener('click', scoring)
@@ -128,7 +158,7 @@ import soso from '../assets/img/so-so.jpg';
   
   }
   
-  newGame();
+  
   }
    const result = document.querySelector('.score');
    const image = document.querySelector('.image')

@@ -34,7 +34,7 @@ function animate(comp){
 
 }})
 
- setInterval(checklength,100)  
+ //setInterval(checklength,100)  
  function checklength(){
  if(input.value.length<5){
    loginButton.disabled=true;
