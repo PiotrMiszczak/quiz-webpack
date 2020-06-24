@@ -30,12 +30,23 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(png|jpe?g|gif|svg|wav)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: "file-loader",
             options: {
               name: "img/[name].[hash:8].[ext]",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.wav$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "sounds/[name].[hash:8].[ext]",
             },
           },
         ],
