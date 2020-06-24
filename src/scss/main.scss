@@ -15,31 +15,82 @@ html {
 body {
   font-family: 'roboto', sans-serif;
   color: $textColor;
-  background: $blue;
+  
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,45,185,1) 100%);
   min-height: 100vh;
 
 }
-main{
+.main{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
+  &__ranking{
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__hidden{
+    display: none;
+  }
 }
-.main__ranking{
-  display: flex;
-  justify-content: flex-start;
+.loader{
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin: auto;
+  border: 1rem solid white;
+  border-top: 1rem solid $darkBlue;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  &__hidden{
+    display: none;
+  }
 }
+
 .header{
-  background: $darkBlue;
+  background: rgba(0, 0, 0, 0.605);
   color: white;
-  margin: 0;
+  margin: 0 ;
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__heading{
-    margin: 0 auto;
-    text-align: center;
+   margin: 0;
     font-weight: normal;
+    display: inline;
    
+  }
+}
+.navigation{
+  background:rgba(0, 0, 0, 0.605);
+  display: none;
+  justify-content: center;
+  &-active{
+    display: flex;
+  }
+  
+  &__list{
+    list-style: none;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item{
+    margin-top: 0.5rem;
+  
+  }
+  &__link{
+    color: white;
+    text-decoration: none;
+    font-weight: lighter;
   }
 }
 .game{
@@ -83,6 +134,10 @@ main{
   outline: none;
   width: 80px;
   transition: all 0.15s ease-in-out; 
+  &__wrapper{
+    display: flex;
+    justify-content: flex-end;;
+  }
 
   &:active{
     transform: scale(1.2) ;
@@ -91,16 +146,15 @@ main{
     cursor: pointer;
   }
   
-  &__wrapper{
-    display: flex;
-    justify-content: flex-end;
-  }
   &-active{
     @include button-active;
     
   }
 }
-
+.image{
+  max-width: 150px;
+  margin-bottom: 2rem;
+}
 .login{
   margin-top: 20px;
   max-width: 300px;
@@ -122,11 +176,22 @@ main{
     text-align: center;
   }
   &__input{
-    border:solid 1px $darkBlue;
-    outline: solid 1px $darkBlue;
+    border:solid 1px white;
+    border-radius: 4px;
+    outline: none;
     width: 70%;
-    margin-left: 0.5rem;
-    justify-self: center;
+    margin-left: 1rem;
+    justify-self: left;
+    &-select{
+      background-color: white;
+      background-image: url(../assets/img/arrow-Copy.png);
+      background-repeat: no-repeat;
+      background-position: right .5em top 50%;
+      -webkit-appearance: none;
+        &::-ms-expand{
+          display: none;
+        }
+    }
     &-radio{
       margin: 1rem 0.2rem 1rem 1rem;
     }
@@ -146,7 +211,7 @@ main{
   }
   }
   &__alert{
-    top: 30%;
+    top: 45%;
     position: absolute;
     color: red;
     display: none;
@@ -167,6 +232,45 @@ main{
   }
   &:hover{
     cursor: pointer;
+  }
+}
+.menu{
+  height: 2rem;
+  width: 2rem;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  margin-left: 2rem;
+  
+}
+.contact{
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__link{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    color: white;
+  }
+  &__button{
+    align-self: flex-end;
+    @include button-active;
+    color: white;
+    width: 100%;
+  }
+  &__input{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    height: 2rem;
+    &--textarea{
+      height: 5rem;
+      
+    }
   }
 }
 

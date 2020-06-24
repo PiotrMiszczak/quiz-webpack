@@ -4,38 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <link rel="manifest" href="manifest.json">
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="pwa/icon-192x192.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="pwa/icon-192x192.png"
+    />
     
 </head>
-<body>
-    <main>
+<body> 
+    <header class="header">
+    <h1 class="header__heading">Quiz game</h1>
+    <button class="menu">&#9776</button>   
+  </header>
+  <nav class="navigation">
+    <ul class="navigation__list">
+        <li class="navigation__item">
+            <a href="ranking.html" class="navigation__link">See ranking</a>
+        </li>
+        <li class="navigation__item">
+            <a href="contact.html" class="navigation__link">Contact me</a>
+        </li>
+        <li class="navigation__item">
+            <a href="https://github.com/PiotrMiszczak" class="navigation__link"><img src="../assets/img/Vector-github.svg"></a>
+        </li>
+        <li class="navigation__item">
+            <a href="https://www.facebook.com/piotr.miszczak.5" class="navigation__link"><img src="../assets/img/Vector-facebook.svg"></a>
+        </li>
+  </nav>
+    <main class="main">
+       
+        <img class ="image" src="../assets/img/Q.svg" style="max-width: 150px;">
         <div class="login__alert">
             <p>Ten login jest już zajęty, wybierz inny</p>
         </div>
         <section class="login">
             <h1 class="login__header">Quiz game</h1>
             <label class ="login__label" for="name">Username:</label>
-            <input class ="login__input" type="text" name="name" id="name">
+            <input class ="login__input" maxlength="14" type="text" name="name" id="name">
            
             <label class ="login__label" for="category">Category:</label>
-            <select class ="login__input" type="text" name="category" id="category">
-                <option value="">General knowledge</option>
-                <option value="">Movies</option>
-                <option value="">Sport</option>
-                <option value="">Politics</option>
-                <option value="">Music</option>
+            <select class ="login__input login__input-select" type="text" name="category" id="category">
+                <option value="9">General</option>
+                <option value="11">Movies</option>
+                <option value="21">Sport</option>
+                <option value="22">Geography</option>
+                <option value="12">Music</option>
             </select>
             <div class="login__radio-wrapper">
-                <input class ="login__input-radio" type="radio" name="difficulty" id="easy" checked>
-                <label class ="login__label-radio" for="easy">Easy</label>
-                <input class ="login__input-radio" type="radio" name="difficulty" id="medium"> 
+                <input class ="login__input-radio" value="easy" type="radio" name="difficulty" id="easy" checked>
+                <label class ="login__label" for="easy">Easy</label>
+                <input class ="login__input-radio" value="medium" type="radio" name="difficulty" id="medium"> 
                 <label class ="login__label" for="medium">Medium</label>
-                <input class ="login__input-radio" type="radio" name="difficulty" id="hard"> 
+                <input class ="login__input-radio" value="hard" type="radio" name="difficulty" id="hard"> 
                 <label class ="login__label" for="hard">Hard</label>
                 
             </div>
             <button class="login__button">Let's start!</button>
     </section>
-    </main>
+  <span style="font-size: 8px;">Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></span>
+<audio id="audio" src="../assets/img/14.wav"></audio>   
+</main>
     
     
 </body>

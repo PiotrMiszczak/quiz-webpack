@@ -3,42 +3,32 @@ import pathetic from '../assets/img/pathetic.jpg';
 import notbad from '../assets/img/not-bad.jpg';
 import soso from '../assets/img/so-so.jpg';
 
-
-
-/* place your code below */
-
-// service worker registration - remove if you're not going to use it
-/*if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-      navigator.serviceWorker.register("serviceworker.js").then(
-        function (registration) {
-          // Registration was successful
-          console.log(
-            "ServiceWorker registration successful with scope: ",
-            registration.scope
-          );
-        },
-        function (err) {
-          // registration failed :(
-          console.log("ServiceWorker registration failed: ", err);
-        }
-      );
-    });
-  }*/
   
   // place your code below
   
-
+  const nextAudio = document.querySelector('.audio__next');
+  const answerAudio = document.querySelector('.audio__answer')
   const question = document.querySelector(".game__question");
   const answers = Array.from(document.querySelectorAll(".answer"));
   const button = document.querySelector('.button');
-  const username = sessionStorage.getItem(0)
+  const username = sessionStorage.getItem('username')
+  const category = sessionStorage.getItem('category')
+  const difficulty = sessionStorage.getItem('difficulty')
   let score = 0;
   const body = document.getElementsByTagName('body')
   let question__counter = 1;
   const questions__amount = 10;
   const counter = document.querySelector('.counter');
-  const counter__circle = document.querySelector('.counter__circle')
+  const counter__circle = document.querySelector('.counter__circle');
+  const loader = document.querySelector('.loader');
+  const main = document.querySelector('.main');
+  let bonus = 1;
+  if(difficulty == 'medium'){
+    bonus=1.25
+  }
+  else if(difficulty == 'hard'){
+    bonus=1.5
+  }
   
   const max__points = (questions__amount);
   let available__questions = [];
@@ -54,7 +44,7 @@ import soso from '../assets/img/so-so.jpg';
     getQuestion();
   }
   
-  fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
+  fetch(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`)
   .then(resp => resp.json())
   .then(resp => {
     const results = resp.results;
@@ -74,6 +64,8 @@ import soso from '../assets/img/so-so.jpg';
 
 
     })
+loader.classList.add('loader__hidden');
+main.classList.remove('main__hidden')
     newGame()
   
   })
@@ -97,7 +89,7 @@ import soso from '../assets/img/so-so.jpg';
 
     };
     
-    const timer = setInterval(countdown,100);
+   const timer = setInterval(countdown,100);
     function stopInterval(){
     clearInterval(timer);
 
@@ -121,6 +113,7 @@ import soso from '../assets/img/so-so.jpg';
   
       //interactions
       answer.addEventListener('click', (e)=>{
+        nextAudio.play();
         button.disabled = false;
         button.classList.add('button-active')
         answers.forEach((answer) => {answer.classList.remove('answer-active')})
@@ -137,11 +130,12 @@ import soso from '../assets/img/so-so.jpg';
   }
   
       if((available__questions.length)==0 && question__counter==questions__amount){
-        
-  localStorage.setItem(username, score);
+        const finalScore = score*bonus;
+  localStorage.setItem(username, finalScore);
   
   window.location = 'score.html';
     }
+    answerAudio.play();
     stopInterval();
     setTimeout(getQuestion(),10)
     question__counter++;
@@ -161,11 +155,12 @@ import soso from '../assets/img/so-so.jpg';
   
   }
    const result = document.querySelector('.score');
-   const image = document.querySelector('.image')
+   const image = document.querySelector('.score__image');
+   
    if(result){
      const points = localStorage.getItem(username)
      const ratio = (points/max__points)
-     result.innerHTML=`Your score: ${points}/${max__points}`
+     result.innerHTML=`Your score: ${points}`
      if(ratio>0.7){
        image.setAttribute('src',"img/not-bad.d2bbc814.jpg")
      }

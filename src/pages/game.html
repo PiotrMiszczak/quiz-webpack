@@ -24,22 +24,25 @@
     <link
       rel="apple-touch-icon"
       sizes="192x192"
-      href="assets/pwa/icons/icon-192x192.png"
+      href="pwa/icon-192x192.png"
     />
 
     <link
       rel="icon"
       type="image/png"
-      href="assets/pwa/icons/icon-192x192.png"
+      href="pwa/icon-192x192.png"
     />
 
     
   </head>
   <body>
     <header class="header">
-      <h1 class="header__heading">Sport quiz</h1>
+      <h1 class="header__heading">Quiz game</h1>
+      
     </header>
-    <main> 
+    <div class="loader"></div>
+    <main class="main main__hidden"> 
+      
       <span class="counter__circle"></span>
       <span class="counter">10</span>
       
@@ -57,6 +60,7 @@
       </div>
       </div>
     </main>
-    
+    <audio class="audio__next" src="../assets/img/next.wav"></audio> 
+    <audio class="audio__answer" src="../assets/img/answer.wav"></audio> 
   </body>
 </html>

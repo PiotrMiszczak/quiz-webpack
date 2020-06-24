@@ -2,16 +2,27 @@ $blue: rgb(176, 221, 235);
 $textColor: rgb(34, 33, 27);
 $darkBlue: rgb(70, 119, 179);
 @mixin button{
+  
     margin: 1rem;
-    background-color:  rgb(102, 101, 94);
+    background: rgb(102, 101, 94);
     border: 1px solid rgb(102, 101, 94);
     font-size: 0.85rem;
   box-shadow:2px 2px rgba(0, 0, 0, 0.279) ;
-  font-weight: lighter;
+  
   color: white;
   border-radius: 10px;
 }
 @mixin button-active{
-    background-color: rgb(224, 76, 39);
+  
+  
+  background: linear-gradient(90deg, rgba(240,126,11,1) 0%, rgba(253,29,29,1) 50%);
     border: 1px solid rgb(224, 76, 39);
+}
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

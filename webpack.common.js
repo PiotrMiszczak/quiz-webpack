@@ -30,7 +30,7 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg|wav)$/i,
         use: [
           {
             loader: "file-loader",
@@ -76,6 +76,12 @@ module.exports = {
       inject: true,
       chunks: ["game"],
       filename: "ranking.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/contact.html",
+      inject: true,
+      chunks: ["start"],
+      filename: "contact.html",
     }),
     
   ],
