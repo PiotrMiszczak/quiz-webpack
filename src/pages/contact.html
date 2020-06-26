@@ -21,12 +21,12 @@
 <body> 
     <main class="main">
         <a class="contact__link" href="index.html">Back</a>
-        <form class="contact" method="post" action="">
+        <form class="contact" method="post" action="/contact.php">
             <h1 class="contact__header">Contact me</h1>
 
-            <input class="contact__input" type="text" placeholder="Name" required>
-            <input class="contact__input" type="email" placeholder="E-mail" required>
-            <textarea required class="contact__input contact__input--textarea" placeholder="Message"></textarea>
+            <input class="contact__input" name="name" type="text" placeholder="Name" required>
+            <input class="contact__input" name="email" type="email" placeholder="E-mail" required>
+            <textarea class="contact__input contact__input--textarea" name="message" placeholder="Message" required ></textarea>
             <input class="contact__button" type="submit" value="Send"></button>
         </form>
     </main>

@@ -26,9 +26,10 @@ module.exports = {
         },
       },
       {
-        test: /\.html$/i,
+        test: /\.(html|php)$/i,
         loader: "html-loader",
       },
+     
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
