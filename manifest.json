@@ -15,7 +15,7 @@
       "purpose": "maskable any"
     },
     {
-      "src": "pwa/icon-512x51.png",
+      "src": "pwa/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
