@@ -1,5 +1,7 @@
 import '../scss/main.scss';
 import {gsap} from "gsap";
+import {registerSW} from "./pwa.js"  
+registerSW();  
 const audio = document.getElementById('audio')
 console.log(audio)
 const image = document.querySelector('.image')

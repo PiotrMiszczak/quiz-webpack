@@ -95,6 +95,12 @@ module.exports = {
       chunks: ["start"],
       filename: "contact.html",
     }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/contact.php",
+      inject: true,
+      chunks: [""],
+      filename: "contact.php",
+    }),
     
   ],
 };
