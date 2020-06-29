@@ -51,6 +51,22 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,45,185,1) 100%
     display: none;
   }
 }
+.progress{
+    width: 100px;
+    height: 20px;
+    border: 1px solid $darkBlue;
+    
+    border-radius: 4px;
+    &__outer{
+      position: absolute;
+    top: 13%;
+    }
+  &__inner{
+    
+background-color: $darkBlue;
+width: 50%;
+  }
+}
 
 .header{
   background: rgba(0, 0, 0, 0.605);
@@ -100,6 +116,7 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,45,185,1) 100%
   &__question{
     font-weight: bold;
     padding: 0.5rem;
+    max-width: 320px;
     
   }
 }
@@ -127,6 +144,12 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,45,185,1) 100%
   }
   &-active{
     background-color: rgb(61, 141, 175);
+  }
+  &-correct{
+    background-color: rgb(61, 209, 78);
+  }
+  &-wrong{
+    background-color: rgb(218, 24, 40);
   }
 }
 .button{

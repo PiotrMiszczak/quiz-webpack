@@ -37,8 +37,9 @@ function AnimateAlert(){
 };
 function AnimateImage(){
     gsap.to(image, {scale:0.8, duration:0.5})
-    gsap.to(image, {rotate:720, scale:5, duration:2, y:150, ease:"Circ.easeIn", delay:0.5,});
-    gsap.to(image, {rotate:-720, scale:0.2, duration:1, y:-150, ease:"Power1.easeIn", delay:3, onComplete:()=>{window.location='game.html'}})
+    gsap.to(image, {rotate:720, scale:5, duration:2, y:150, ease:"Circ.easeIn", delay:0.5});
+    setTimeout(()=>{window.location='game.html'},3500)
+   
 }
    loginButton.addEventListener('click', (e)=>{
    const username = input.value;
