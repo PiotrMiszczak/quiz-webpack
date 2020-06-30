@@ -15,7 +15,7 @@ const category = sessionStorage.getItem("category");
 const difficulty = sessionStorage.getItem("difficulty");
 let score = 0;
 const body = document.getElementsByTagName("body");
-let question__counter = 1;
+let question__counter = 0;
 const questions__amount = 10;
 const counter = document.querySelector(".counter");
 const counter__circle = document.querySelector(".counter__circle");
@@ -40,6 +40,7 @@ if (button) {
     available__questions = [...questions];
 
     getQuestion();
+    
   }
 
   fetch(
@@ -68,19 +69,22 @@ if (button) {
       loader.classList.add("loader__hidden");
       main.classList.remove("main__hidden");
       newGame();
+     
     });
+    
+ 
 
+    function stopInterval(){
+      clearInterval(timer)
+    }
+    var timer = setInterval(countdown, 100);
   function getQuestion() {
-    counter.innerHTML = "10";
-    progress__bar.style.width = `${
-      (question__counter / questions__amount) * 100
-    }%`;
-
+    clearInterval(timer);
     function countdown() {
       let value = counter.innerHTML;
       value = (value - 0.1).toFixed(1);
       counter.innerHTML = value;
-      if (value == 0.1) {
+      if(value<0.2){
         if (
           available__questions.length == 0 &&
           question__counter == questions__amount
@@ -88,19 +92,20 @@ if (button) {
           localStorage.setItem(username, score);
           window.location = "score.html";
         }
-        stopInterval();
-        setTimeout(getQuestion(), 10);
-        question__counter++;
+        button.removeEventListener("click", scoring)
+        getQuestion();
       }
+     
     }
-
-    const timer = setInterval(countdown, 100);
-    function stopInterval() {
-      clearInterval(timer);
-    }
-
     
+    question__counter++;
+    counter.innerHTML = "10";
+    timer = setInterval(countdown, 100)
     
+    progress__bar.style.width = `${
+      (question__counter / questions__amount) * 100
+    }%`;
+
     let question__index = Math.floor(
       Math.random() * available__questions.length
     );
@@ -151,11 +156,11 @@ if (button) {
         }
       })
       answerAudio.play();
-      stopInterval();
+      clearInterval(timer);
       button.disabled=true;
       button.classList.remove("button-active");
       setTimeout(getQuestion, 1000);
-      question__counter++;
+      
     }
 
     button.addEventListener("click", scoring);
