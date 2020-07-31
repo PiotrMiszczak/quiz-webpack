@@ -18,11 +18,3 @@ $darkBlue: rgb(70, 119, 179);
   background: linear-gradient(90deg, rgba(240,126,11,1) 0%, rgba(253,29,29,1) 50%);
     border: 1px solid rgb(224, 76, 39);
 }
-@keyframes spin {
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}

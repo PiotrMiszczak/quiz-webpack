@@ -39,7 +39,7 @@ function AnimateAlert(){
 };
 function AnimateImage(){
     gsap.to(image, {scale:0.8, duration:0.5})
-    gsap.to(image, {rotate:720, scale:5, duration:2, y:150, ease:"Circ.easeIn", delay:0.5});
+    gsap.to(image, {rotate:720, scale:5, duration:2, y:150,z:0.01, ease:"Circ.easeIn", delay:0.5});
     setTimeout(()=>{window.location='game.html'},3500)
    
 }
@@ -68,6 +68,7 @@ function AnimateImage(){
         })
        setTimeout(() => {audio.play()},1200)
     AnimateImage();
+   
     
 
 }})
