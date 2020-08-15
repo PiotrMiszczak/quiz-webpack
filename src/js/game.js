@@ -4,7 +4,7 @@ import notbad from "../assets/img/not-bad.jpg";
 import soso from "../assets/img/so-so.jpg";
 
 // place your code below
-
+let current__question
 const nextAudio = document.querySelector(".audio__next");
 const answerAudio = document.querySelector(".audio__answer");
 const question = document.querySelector(".game__question");
@@ -74,12 +74,8 @@ if (button) {
     
  
 
-    function stopInterval(){
-      clearInterval(timer)
-    }
-    var timer = setInterval(countdown, 100);
-  function getQuestion() {
-    clearInterval(timer);
+    // tu wywale funkcje
+    var timer
     function countdown() {
       let value = counter.innerHTML;
       value = (value - 0.1).toFixed(1);
@@ -92,11 +88,48 @@ if (button) {
           localStorage.setItem(username, score);
           window.location = "score.html";
         }
-        button.removeEventListener("click", scoring)
+        button.removeEventListener("click", scoring(current__question))
         getQuestion();
       }
      
     }
+    function scoring(question) {
+      console.log('wywolanie')
+      if (
+        answers[question.correct].classList.contains("answer-active")
+      ) {
+        score++;
+        console.log(score);
+      }
+
+      if (
+        available__questions.length == 0 &&
+        question__counter == questions__amount
+      ) {
+        const finalScore = score * bonus;
+        localStorage.setItem(username, finalScore);
+
+        window.location = "score.html";
+      }
+      answers[question.correct].classList.add("answer-correct");
+      answers.forEach((answer)=>{
+        if(answer.classList.contains('answer-active') && (!answer.classList.contains('answer-correct'))){
+          answer.classList.add('answer-wrong')
+
+        }
+      })
+      answerAudio.play();
+      clearInterval(timer);
+      button.disabled=true;
+      button.classList.remove("button-active");
+      setTimeout(getQuestion, 1000);
+      
+    }
+
+    //wywaliem funkcje
+  function getQuestion() {
+    clearInterval(timer);
+    
     
     question__counter++;
     counter.innerHTML = "10";
@@ -109,7 +142,7 @@ if (button) {
     let question__index = Math.floor(
       Math.random() * available__questions.length
     );
-    let current__question = available__questions[question__index];
+    current__question = available__questions[question__index];
     question.innerHTML = current__question.question;
     available__questions.splice(question__index, 1);
 
@@ -131,37 +164,7 @@ if (button) {
         answer.classList.add("answer-active");
       });
     });
-    function scoring() {
-      if (
-        answers[current__question.correct].classList.contains("answer-active")
-      ) {
-        score++;
-        console.log(score);
-      }
-
-      if (
-        available__questions.length == 0 &&
-        question__counter == questions__amount
-      ) {
-        const finalScore = score * bonus;
-        localStorage.setItem(username, finalScore);
-
-        window.location = "score.html";
-      }
-      answers[current__question.correct].classList.add("answer-correct");
-      answers.forEach((answer)=>{
-        if(answer.classList.contains('answer-active') && (!answer.classList.contains('answer-correct'))){
-          answer.classList.add('answer-wrong')
-
-        }
-      })
-      answerAudio.play();
-      clearInterval(timer);
-      button.disabled=true;
-      button.classList.remove("button-active");
-      setTimeout(getQuestion, 1000);
-      
-    }
+   
 
     button.addEventListener("click", scoring);
     button.addEventListener("click", (e) => {
