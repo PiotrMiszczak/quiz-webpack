@@ -74,12 +74,10 @@ if (button) {
     
  
 
-    function stopInterval(){
-      clearInterval(timer)
-    }
-    var timer = setInterval(countdown, 100);
+   
+   
   function getQuestion() {
-    clearInterval(timer);
+    
     function countdown() {
       let value = counter.innerHTML;
       value = (value - 0.1).toFixed(1);
@@ -92,7 +90,8 @@ if (button) {
           localStorage.setItem(username, score);
           window.location = "score.html";
         }
-        button.removeEventListener("click", scoring)
+        button.removeEventListener("click", scoring);
+        clearInterval(timer);
         getQuestion();
       }
      
@@ -100,7 +99,7 @@ if (button) {
     
     question__counter++;
     counter.innerHTML = "10";
-    timer = setInterval(countdown, 100)
+   var timer = setInterval(countdown, 100)
     
     progress__bar.style.width = `${
       (question__counter / questions__amount) * 100
@@ -164,7 +163,7 @@ if (button) {
     }
 
     button.addEventListener("click", scoring);
-    button.addEventListener("click", (e) => {
+   button.addEventListener("click", (e) => {
       button.removeEventListener("click", scoring);
     });
   }

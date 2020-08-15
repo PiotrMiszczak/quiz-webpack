@@ -72,8 +72,8 @@ function AnimateImage(){
     
 
 }})
+input.addEventListener('keyup', checklength);
 
- setInterval(checklength,100)  
  function checklength(){
  if(input.value.length<5){
    loginButton.disabled=true;
