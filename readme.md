@@ -1,5 +1,5 @@
 # Simple quiz application with categories and difficulty levels
-![Quiz logo](/public/pwa/icon-512x512.png)
+![Quiz logo](/public/pwa/icon-192x192.png)
 
 ## Available scripts
 
