@@ -3,7 +3,6 @@ import {gsap} from "gsap";
 import {registerSW} from "./pwa.js"  
 registerSW();  
 const audio = document.getElementById('audio')
-console.log(audio)
 const image = document.querySelector('.image')
 const loginButton = document.querySelector('.login__button');
 const alert = document.querySelector('.login__alert')
@@ -13,6 +12,8 @@ const select = document.querySelector('.login__input-select');
 const radio = document.querySelectorAll('.login__input-radio');
 const menu = document.querySelector('.menu')
 const navigation = document.querySelector('.navigation')
+const radios = [...radio]
+
 menu.addEventListener('click', (e)=>{
     if(!navigation.classList.contains('navigation-active')){
     navigation.classList.add('navigation-active');
@@ -29,7 +30,8 @@ else{
     
 
 }})
-const radios = [...radio]
+
+
 function AnimateAlert(){
     gsap.from(alert, {duration:0.5, y:-200, ease: "elastic.out(1,0.5)"});
     gsap.to(alert, {opacity:0, duration:0.5, delay:1, onComplete:
