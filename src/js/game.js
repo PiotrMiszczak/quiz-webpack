@@ -13,15 +13,15 @@ const button = document.querySelector(".button");
 const username = sessionStorage.getItem("username");
 const category = sessionStorage.getItem("category");
 const difficulty = sessionStorage.getItem("difficulty");
-let score = 0;
 const body = document.getElementsByTagName("body");
-let question__counter = 0;
 const questions__amount = 10;
 const counter = document.querySelector(".counter");
 const counter__circle = document.querySelector(".counter__circle");
 const loader = document.querySelector(".loader");
 const main = document.querySelector(".main");
 const progress__bar = document.querySelector(".progress__inner");
+let score = 0;
+let question__counter = 0;
 let bonus = 1;
 if (difficulty == "medium") {
   bonus = 1.25;
@@ -40,7 +40,6 @@ if (button) {
     available__questions = [...questions];
 
     getQuestion();
-    
   }
 
   fetch(
@@ -69,20 +68,14 @@ if (button) {
       loader.classList.add("loader__hidden");
       main.classList.remove("main__hidden");
       newGame();
-     
     });
-    
- 
 
-   
-   
   function getQuestion() {
-    
     function countdown() {
       let value = counter.innerHTML;
       value = (value - 0.1).toFixed(1);
       counter.innerHTML = value;
-      if(value<0.2){
+      if (value < 0.2) {
         if (
           available__questions.length == 0 &&
           question__counter == questions__amount
@@ -94,13 +87,12 @@ if (button) {
         clearInterval(timer);
         getQuestion();
       }
-     
     }
-    
+
     question__counter++;
     counter.innerHTML = "10";
-   var timer = setInterval(countdown, 100)
-    
+    var timer = setInterval(countdown, 100);
+
     progress__bar.style.width = `${
       (question__counter / questions__amount) * 100
     }%`;
@@ -148,22 +140,23 @@ if (button) {
         window.location = "score.html";
       }
       answers[current__question.correct].classList.add("answer-correct");
-      answers.forEach((answer)=>{
-        if(answer.classList.contains('answer-active') && (!answer.classList.contains('answer-correct'))){
-          answer.classList.add('answer-wrong')
-
+      answers.forEach((answer) => {
+        if (
+          answer.classList.contains("answer-active") &&
+          !answer.classList.contains("answer-correct")
+        ) {
+          answer.classList.add("answer-wrong");
         }
-      })
+      });
       answerAudio.play();
       clearInterval(timer);
-      button.disabled=true;
+      button.disabled = true;
       button.classList.remove("button-active");
       setTimeout(getQuestion, 1000);
-      
     }
 
     button.addEventListener("click", scoring);
-   button.addEventListener("click", (e) => {
+    button.addEventListener("click", (e) => {
       button.removeEventListener("click", scoring);
     });
   }
