@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { registerSW } from "./pwa.js";
 
 const audio = document.getElementById("audio");
-const image = document.querySelector(".image");
+const image = document.querySelector(".logo__image");
 const loginButton = document.querySelector(".login__button");
 const alert = document.querySelector(".login__alert");
 const input = document.querySelector(".login__input");
