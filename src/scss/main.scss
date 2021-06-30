@@ -18,8 +18,8 @@ html {
 body {
   font-family: "roboto", sans-serif;
   color: $textColor;
-  background: rgb(3,72,85);
-  background: linear-gradient(180deg, rgba(3,72,85,1) 1%, rgba(41,187,201,1) 100%, rgba(106,218,241,1) 100%);
+  background: #a796bb;
+  
   min-height: 100vh;
 }
 .main {
@@ -187,7 +187,7 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #00000033;
   z-index: -1;
   animation: circles ease-in-out 20s infinite;
 &::after{
@@ -224,7 +224,7 @@ body {
   grid-template-columns: 1fr 2fr;
   row-gap: 0.5rem;
 
-  border: 2px solid rgb(44, 106, 199);
+  border: 2px solid #79589f;
   border-radius: 4px;
   &__radio-wrapper {
     grid-column-start: span 2;

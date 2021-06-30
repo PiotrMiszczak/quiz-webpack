@@ -89,18 +89,6 @@ module.exports = {
       chunks: ["game"],
       filename: "ranking.html",
     }),
-    new HtmlWebpackPlugin({
-      template: "./src/pages/contact.html",
-      inject: true,
-      chunks: ["start"],
-      filename: "contact.html",
-    }),
-    new HtmlWebpackPlugin({
-      template: "./src/pages/contact.php",
-      inject: true,
-      chunks: [""],
-      filename: "contact.php",
-    }),
     
   ],
 };
