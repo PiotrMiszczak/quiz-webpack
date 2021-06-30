@@ -1,7 +1,7 @@
 {
-  "name": "wtf-webpack-starterkit",
+  "name": "Quiz game",
   "version": "1.0.0",
-  "description": "WTF Webpack starterkit",
+  "description": "Quiz game",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "Webpack",
     "boilerplate"
   ],
-  "author": "Maciek Korsan",
+  "author": "Piotr Miszczak",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.1",
