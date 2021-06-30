@@ -127,7 +127,6 @@ if (button) {
         answers[current__question.correct].classList.contains("answer-active")
       ) {
         score++;
-        console.log(score);
       }
 
       if (
